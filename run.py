@@ -1,12 +1,16 @@
 from BrainfuckInterpreter import BrainfuckInterpreter
 from tkinter import *
+import sys
+
 class GUI():
-	def __init__(self, master):
-		self.bfi = BrainfuckInterpreter()
+	def __init__(self, master, bfi, random_bf):
+		self.bfi = bfi
 		self.master = master
 		self.master.minsize(width=700, height=450)
 		self.master.geometry('800x550')
-		master.title("Brainfuck interpreter")
+		master.title("Brainfuck Interpreter")
+		if random_bf:
+			master.title("Random Brainfuck Interpreter")
 
 		self.code_label = Label(master, text="Code")
 		self.code_label.pack()
@@ -46,8 +50,14 @@ class GUI():
 		self.text_out.configure(state="disabled")
 
 
+random_bf = False
+if len(sys.argv) > 1:
+	if sys.argv[1] == "-r": 
+		random_bf = True
+
+bfi = BrainfuckInterpreter(random_bf)
 
 root = Tk()
 root.iconbitmap("dl.ico")
-gui = GUI(root)
+gui = GUI(root, bfi, random_bf)
 root.mainloop()
