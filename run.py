@@ -1,4 +1,4 @@
-from bfinterpreter import BrainfuckInterpreter
+from BrainfuckInterpreter import BrainfuckInterpreter
 from tkinter import *
 class GUI():
 	def __init__(self, master):
