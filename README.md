@@ -1,9 +1,10 @@
 # brainfuck-to-python-converter
-Brainfuck Interpreter / Brainfuck to Python converter
+Brainfuck Interpreter / Brainfuck to Python converter 
 
 
-Written in Python 
+[Brainfuck](https://esolangs.org/wiki/Brainfuck) Interpreter: python run.py  
+[Random Brainfuck](https://esolangs.org/wiki/Random_Brainfuck) Interpreter: python run.py -r      
 
-Python 3.6.1
-
+Written in Python  
+Python 3.6.1  
 tkinter 8.6
