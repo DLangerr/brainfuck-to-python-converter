@@ -7,3 +7,9 @@ Brainfuck Interpreter / Brainfuck to Python converter
 
 Written in Python 3.6.1  
 Using tkinter 8.6
+
+Example Brainfuck code: Simple Multiplication (Only for single digit results)
+<<++++++++[>++++++>>>++++++<<<<-]>>,>,<<[>->-<<-]>[>[>+>+<<-]>>[<<+>>-]<<<-]>>.
+
+Input: 33
+Output: 9
