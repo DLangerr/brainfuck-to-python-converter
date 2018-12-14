@@ -8,8 +8,8 @@ class BrainfuckInterpreter:
 
 	def brainfuck_to_py(self, code):
 		comms = {
-			">": ["i+=1", "if i>len(arr)-1:", "\ti=0"],
-			"<": ["i-=1", "if i<0:", "\ti=len(arr)-1"],
+			">": "i = i + 1 if i < len(arr)-1 else 0",
+			"<": "i = i - 1 if i > 0 else len(arr)-1",
 			"+": "arr[i] += 1",
 			"-": "arr[i] -= 1",
 			".": ["try: std_out += chr(arr[i])",
@@ -17,16 +17,14 @@ class BrainfuckInterpreter:
 			",": ["if text_pointer <= len(text)-1:", 
 						"\tarr[i] = ord(text[text_pointer])",
 						"\ttext_pointer += 1",
-					"else:",
-						"\tbreak",
-						"\tpass"],
+					"else: break"
+				],
 			"[": "while not arr[i] == 0:" 
 		}
 		if self.random_bf:
 			comms["?"] = "arr[i] = round(random.uniform(0, 255))"
 
 		inits = ['i=0', 'arr=[0]*30000', 'std_out=""', 'text_pointer=0']
-		list_comms = [',', '<', '>', '.']
 		tabs = 0
 		inloop = False
 		with open("brainfuck_code.py", "w+") as f:
@@ -36,7 +34,7 @@ class BrainfuckInterpreter:
 			for c in inits:
 				f.write(c + "\n" + "\t"*tabs)
 			for c in code:
-				if c in list_comms:
+				if c in [',', '.']:
 					for i in comms[c]:
 						if not inloop and "break" in i:
 							continue
