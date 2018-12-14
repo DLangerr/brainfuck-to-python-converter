@@ -34,7 +34,8 @@ class BrainfuckInterpreter:
 			for c in inits:
 				f.write(c + "\n" + "\t"*tabs)
 			for c in code:
-				if c == ">" or c == "<" or c == ",":
+				#if c == ">" or c == "<" or c == ",":
+				if not c == "]" and isinstance(comms[c], list):
 					for i in comms[c]:
 						if not inloop and "break" in i:
 							continue
