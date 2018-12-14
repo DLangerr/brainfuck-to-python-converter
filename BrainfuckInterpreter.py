@@ -12,7 +12,8 @@ class BrainfuckInterpreter:
 			"<": ["i-=1", "if i<0:", "\ti=len(arr)-1"],
 			"+": "arr[i] += 1",
 			"-": "arr[i] -= 1",
-			".": "std_out += chr(arr[i])",
+			".": ["try: std_out += chr(arr[i])",
+					"except ValueError: pass"],
 			",": ["if text_pointer <= len(text)-1:", 
 						"\tarr[i] = ord(text[text_pointer])",
 						"\ttext_pointer += 1",
@@ -25,6 +26,7 @@ class BrainfuckInterpreter:
 			comms["?"] = "arr[i] = round(random.uniform(0, 255))"
 
 		inits = ['i=0', 'arr=[0]*30000', 'std_out=""', 'text_pointer=0']
+		list_comms = [',', '<', '>', '.']
 		tabs = 0
 		inloop = False
 		with open("brainfuck_code.py", "w+") as f:
@@ -35,7 +37,7 @@ class BrainfuckInterpreter:
 				f.write(c + "\n" + "\t"*tabs)
 			for c in code:
 				#if c == ">" or c == "<" or c == ",":
-				if not c == "]" and isinstance(comms[c], list):
+				if c in list_comms:
 					for i in comms[c]:
 						if not inloop and "break" in i:
 							continue
@@ -55,5 +57,5 @@ class BrainfuckInterpreter:
 
 	def get_output(self, text):
 		reload(bfc)
-		return bfc.get_std_out(text)
+		return bfc.get_std_out(text.strip())
 
