@@ -11,5 +11,5 @@ Using tkinter 8.6
 Example Brainfuck code: Simple Multiplication (Only for single digit results):  
 <<++++++++[>++++++>>>++++++<<<<-]>>,>,<<[>->-<<-]>[>[>+>+<<-]>>[<<+>>-]<<<-]>>.
 
-Input: 33
+Input: 33  
 Output: 9
