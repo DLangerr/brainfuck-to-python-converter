@@ -10,8 +10,8 @@ class BrainfuckInterpreter:
 		comms = {
 			">": "i = i + 1 if i < len(arr)-1 else 0",
 			"<": "i = i - 1 if i > 0 else len(arr)-1",
-			"+": "arr[i] += 1",
-			"-": "arr[i] -= 1",
+			"+": "arr[i] = arr[i] + 1 if arr[i] != 255 else 0",
+			"-": "arr[i] = arr[i] - 1 if arr[i] != 0 else 255",
 			".": ["try: std_out += chr(arr[i])",
 					"except ValueError: pass"],
 			",": ["if text_pointer <= len(text)-1:", 
